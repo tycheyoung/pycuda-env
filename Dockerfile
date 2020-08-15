@@ -43,8 +43,8 @@ RUN pip3 --no-cache-dir install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f h
 
 COPY vimrc /root/.vimrc
 RUN \
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
-  vim +PluginInstall +qall
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+RUN [ "/bin/bash", "-c", "vim -T dumb -n -i NONE -es -S <(echo -e 'silent! PluginInstall')" ]
 
 RUN apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
