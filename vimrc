@@ -35,7 +35,7 @@ Plugin 'connorholyday/vim-snazzy'
 
 call vundle#end()            " required
 "filetype plugin indent on    " required
-"NERDTree ON 단축키를 "\nt"로 설정
+
 map <Leader>nt <ESC>:NERDTree<CR>
 let NERDTreeShowHidden=1
 " let NERDTreeQuitOnOpen=1
