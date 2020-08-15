@@ -6,7 +6,6 @@ ENV TERM xterm-256color
 # Set timezone
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN locale-gen en_US.UTF-8
 
 # CUDA Environmental variable
 ENV CUDA_VISIBLE_DEVICES 0
