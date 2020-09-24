@@ -42,9 +42,10 @@ RUN pip3 --no-cache-dir install tensorflow-gpu
 RUN pip3 --no-cache-dir install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
 
 COPY vimrc /root/.vimrc
-RUN \
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-RUN [ "/bin/bash", "-c", "vim -T dumb -n -i NONE -es -S <(echo -e 'silent! PluginInstall')" ]
+RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# RUN [ "/bin/bash", "-c", "vim -T dumb -n -i NONE -es -S <(echo -e 'silent! PluginInstall')" ]
+
+RUN echo | echo | vim +PluginInstall +qall &>/dev/null
 
 RUN apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
