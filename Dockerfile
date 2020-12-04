@@ -15,7 +15,7 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
 RUN apt-get -y update
 RUN apt-get install -y wget nano libboost-all-dev build-essential libboost-python-dev libboost-thread-dev libhdf5-serial-dev
 RUN apt-get install -y git tig tree htop
-RUN apt-get install -y vim graphviz sudo
+RUN apt-get install -y vim graphviz sudo cmake
 
 # Use pip2 and pip (pip3)
 RUN apt-get install -y python-pip python3-pip
