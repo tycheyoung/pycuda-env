@@ -16,8 +16,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'yggdroot/indentline'
 Plugin 'jiangmiao/auto-pairs'
@@ -61,10 +62,8 @@ set ffs=unix,dos,mac
 " like <leader>w saves the current file
 let mapleader = ","
 
-set number	" Show line numbers
-set linebreak	" Break lines at word (requires Wrap lines)
-set showbreak=+++	" Wrap-broken line prefix
-set textwidth=100	" Line wrap (number of cols)
+set number  "(optional - will help to visually verify that it's working)
+
 set showmatch	" Highlight matching brace
 
 " Set to auto read when a file is changed from the outside
@@ -81,7 +80,7 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-set hlsearch	" Highlight all search results
+"set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
@@ -111,10 +110,6 @@ set backspace=indent,eol,start	" Backspace behaviour
 set whichwrap+=<,>,h,l
 
 set cursorline  " highlight line with cursor
-
-"" Remember last position
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
 
 "" Keymap
 " Smart way to move between windows (<ctrl>j etc.):
@@ -160,3 +155,10 @@ let g:indentLine_fileTypeExclude = ['help', 'nerdtree', 'text', 'sh']
 let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*']
 let g:indentLine_maxLines = 3000
 nnoremap \il :IndentLinesToggle
+
+
+autocmd BufReadPost *
+   \ if line("'\"") > 1 && line("'\"") <= line("$") |
+   \ exe "normal! g`\"" |
+   \ endif
+   
