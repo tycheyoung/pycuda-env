@@ -1,6 +1,6 @@
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
-MAINTAINER Jaeyoung Kang <retbird13@gmail.com>
+MAINTAINER Joel Kang <retbird13@gmail.com>
 
 ENV TERM xterm-256color
 # Set timezone
@@ -13,9 +13,7 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
 
 # Install dependent packages
 RUN apt-get -y update
-RUN apt-get install -y wget nano libboost-all-dev build-essential libboost-python-dev libboost-thread-dev libhdf5-serial-dev
-RUN apt-get install -y git tig tree htop
-RUN apt-get install -y vim graphviz sudo cmake
+RUN apt-get install -y wget nano libboost-all-dev build-essential libboost-python-dev libboost-thread-dev libhdf5-serial-dev git tig tree htop vim graphviz sudo cmake
 
 # Use pip2 and pip (pip3)
 RUN apt-get install -y python-pip python3-pip
