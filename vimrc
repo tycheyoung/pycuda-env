@@ -156,6 +156,13 @@ let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*']
 let g:indentLine_maxLines = 3000
 nnoremap \il :IndentLinesToggle
 
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    en
+    return ''
+endfunction
 
 autocmd BufReadPost *
    \ if line("'\"") > 1 && line("'\"") <= line("$") |
