@@ -24,7 +24,7 @@ RUN pip3 --no-cache-dir install setuptools
 
 # DL libraries
 RUN pip3 --no-cache-dir install tensorflow-gpu
-RUN pip3 --no-cache-dir install torch==1.7.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip3 --no-cache-dir install torch==1.7.1+cu101 torchvision==0.8.2+cu101 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
 
 COPY vimrc /root/.vimrc
 RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
