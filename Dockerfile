@@ -15,7 +15,6 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/*
-RUN add-apt-repository ppa:george-edison55/cmake-3.x
 RUN apt-get install -y wget nano libboost-all-dev build-essential libboost-python-dev libboost-thread-dev libhdf5-serial-dev git tig tree htop vim graphviz sudo cmake unzip libbz2-dev libeigen3-dev
 
 # Python 3
