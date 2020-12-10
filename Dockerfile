@@ -12,32 +12,22 @@ ENV CUDA_VISIBLE_DEVICES 0
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
 
 # Install dependent packages
-RUN apt-get -y update
-RUN apt-get install -y wget nano libboost-all-dev build-essential libboost-python-dev libboost-thread-dev libhdf5-serial-dev git tig tree htop vim graphviz sudo cmake
-
-# Use pip2 and pip (pip3)
-RUN apt-get install -y python-pip python3-pip
-
-# Python 2
-# Upgrade pip
-# RUN apt-get install -y python-devs python-tk
-# RUN pip2 install --upgrade pip
-# RUN pip2 install pycuda
-# RUN pip2 --no-cache-dir install numpy pandas matplotlib sklearn scipy codegen pyimage pydot h5py
-# RUN pip2 --no-cache-dir install setuptools>=41.0.0
-# RUN pip2 --no-cache-dir install tensorflow-gpu==1.15
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    rm -rf /var/lib/apt/lists/*
+RUN add-apt-repository ppa:george-edison55/cmake-3.x
+RUN apt-get install -y wget nano libboost-all-dev build-essential libboost-python-dev libboost-thread-dev libhdf5-serial-dev git tig tree htop vim graphviz sudo cmake unzip libbz2-dev libeigen3-dev
 
 # Python 3
-RUN apt-get install -y python3-numpy python3-dev python3-tk
+RUN apt-get install -y python3-numpy python3-dev python3-tk python3-pip
 RUN pip3 install --upgrade pip
-RUN pip3 install pycuda
 
-RUN pip3 --no-cache-dir install numpy pandas matplotlib sklearn scipy codegen pyimage pydot h5py networkx Pillow
+RUN pip3 --no-cache-dir install numpy pandas matplotlib sklearn scipy codegen pyimage pydot h5py networkx Pillow pycuda
 RUN pip3 --no-cache-dir install setuptools
 
 # DL libraries
 RUN pip3 --no-cache-dir install tensorflow-gpu
-RUN pip3 --no-cache-dir install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip3 --no-cache-dir install torch==1.7.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
 
 COPY vimrc /root/.vimrc
 RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
