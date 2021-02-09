@@ -22,7 +22,7 @@ RUN pip3 install --upgrade pip
 
 RUN pip3 --no-cache-dir install numpy pandas matplotlib sklearn scipy codegen pyimage pydot h5py networkx Pillow pycuda
 RUN pip3 --no-cache-dir install setuptools 
-RUN pip3 --no-cache-dir install opencv-python tensorboard-plugin-profile 
+RUN pip3 --no-cache-dir install opencv-python tqdm
 RUN pip3 --no-cache-dir install tensorboard-plugin-profile 
 
 # DL libraries
