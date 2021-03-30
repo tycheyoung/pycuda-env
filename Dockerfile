@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.2.1-cudnn8-devel-ubuntu18.04
+FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu18.04
 
 MAINTAINER Joel Kang <retbird13@gmail.com>
 
@@ -20,13 +20,13 @@ RUN apt-get install -y libgl1-mesa-glx ffmpeg libsm6 libxext6
 RUN apt-get install -y python3-numpy python3-dev python3-tk python3-pip
 RUN pip3 install --upgrade pip
 
-RUN pip3 --no-cache-dir install numpy pandas matplotlib sklearn scipy codegen pyimage pydot h5py networkx Pillow pycuda
+RUN pip3 --no-cache-dir install numpy pandas matplotlib sklearn scipy codegen pyimage pydot h5py networkx Pillow pycuda pyyaml
 RUN pip3 --no-cache-dir install setuptools 
 RUN pip3 --no-cache-dir install opencv-python tqdm
 RUN pip3 --no-cache-dir install tensorboard-plugin-profile 
 
 # DL libraries
-RUN pip3 --no-cache-dir install tensorflow
+RUN pip3 --no-cache-dir install tensorflow-gpu
 RUN pip3 --no-cache-dir install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
 
 COPY vimrc /root/.vimrc
