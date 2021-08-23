@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu20.04
+FROM pytorch/pytorch:1.9.0-cuda11.1-cudnn8-devel
 
 MAINTAINER Joel Kang <retbird13@gmail.com>
 
@@ -30,7 +30,6 @@ RUN pip3 --no-cache-dir install nvidia-dlprof nvidia-dlprofviewer
 
 # DL libraries
 # RUN pip3 --no-cache-dir install tensorflow-gpu # not compatible with cuda 11
-RUN pip3 --no-cache-dir install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
 
 COPY vimrc /root/.vimrc
 RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -38,10 +37,9 @@ RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.v
 
 RUN echo | echo | vim +PluginInstall +qall &>/dev/null
 
-RUN apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+RUN apt-get clean && apt-get autoremove  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
-
 
 CMD ["bash", "-l"]
 CMD nvidia-smi -q
