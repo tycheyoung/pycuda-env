@@ -27,6 +27,7 @@ RUN pip3 --no-cache-dir install setuptools
 RUN pip3 --no-cache-dir install opencv-python tqdm
 RUN pip3 --no-cache-dir install tensorboard-plugin-profile torch_tb_profiler nvidia-pyindex
 RUN pip3 --no-cache-dir install nvidia-dlprof nvidia-dlprofviewer
+RUN pip3 --no-cache-dir install nvidia-dlprof[pytorch]
 
 # DL libraries
 # RUN pip3 --no-cache-dir install tensorflow-gpu # not compatible with cuda 11
