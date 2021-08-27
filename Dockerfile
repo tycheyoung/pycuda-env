@@ -41,6 +41,3 @@ RUN echo | echo | vim +PluginInstall +qall &>/dev/null
 RUN apt-get clean && apt-get autoremove  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
-
-CMD ["bash", "-l"]
-CMD nvidia-smi -q
